@@ -1,0 +1,6 @@
+[submodule "third_party/ctcdecode"]
+	path = third_party/ctcdecode
+	url = https://github.com/parlance/ctcdecode.git
+[submodule "third_party/kenlm"]
+	path = third_party/kenlm
+	url = https://github.com/kpu/kenlm.git

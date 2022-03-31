@@ -9,6 +9,10 @@ packages = [{include = "htr_tg_bot"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+torch = "1.10.0"
+numpy = "^1.22.3"
+wheel = "^0.37.1"
+ninja = "^1.10.2.3"
 
 
 [tool.poetry.group.dev.dependencies]
