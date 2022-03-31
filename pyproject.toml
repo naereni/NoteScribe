@@ -9,11 +9,12 @@ packages = [{include = "htr_tg_bot"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-torch = "1.10.0"
 numpy = "^1.22.3"
 wheel = "^0.37.1"
 ninja = "^1.10.2.3"
-
+torch = "1.10.0"
+torchvision = "0.11.1"
+detectron2 = {url = "https://dl.fbaipublicfiles.com/detectron2/wheels/cu102/torch1.10/detectron2-0.6%2Bcu102-cp39-cp39-linux_x86_64.whl"}
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^3.0.0"
@@ -21,7 +22,7 @@ pre-commit = "^2.17.0"
 flake8 = "^4.0.1"
 mypy = "^0.942"
 isort = "^5.10.1"
-black = {version = "^22.3.0", allow-prereleases = true}
+black = "21.4b2"
 
 [build-system]
 requires = ["poetry-core"]
