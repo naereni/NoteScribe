@@ -5,7 +5,6 @@ description = "Telegram bot for handwritten text recognition"
 authors = ["naereni <naereni12@gmail.com>"]
 license = "MIT License"
 readme = "README.md"
-packages = [{include = "htr_tg_bot"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -27,6 +26,7 @@ black = "21.4b2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = true
