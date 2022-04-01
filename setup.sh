@@ -1,5 +1,6 @@
 #!bin/bash
 env_path="$(poetry env use python3.9)"
+env_path="$(poetry env use python3.9)"
 source ${env_path:18}/bin/activate
 poetry install
 cd third_party/ctcdecode && python setup.py install
