@@ -1,0 +1,9 @@
+{
+    "OCR_MODEL_PATH": "OCR-0.0374.ckpt",
+    "BEAM_MODEL_PATH": "beamsearch.arpa",
+    "SEGM_MODEL_PATH": "SEGM-2160x3130.pth",
+    "ocr_config":{
+        "alphabet": " @!"%'()+,-./0123456789:;=?AEFIMNOSTW[]abcdefghiklmnopqrstuvwxyАБВГДЕЖЗИКЛМНОПРСТУХЦЧШЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё№",
+        "image": {"width": 256, "height": 64},
+    }
+}
