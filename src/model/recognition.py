@@ -3,9 +3,8 @@ import torch
 import torchvision
 from ctcdecode import CTCBeamDecoder
 
-import helper_functions as help_fn
-import tokenizer
-import transforms
+from model import helper_functions as help_fn
+from model import tokenizer, transforms
 
 
 def get_resnet34_backbone(pretrained: bool = True) -> torch.nn.Sequential:

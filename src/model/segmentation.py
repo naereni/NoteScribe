@@ -6,7 +6,7 @@ from detectron2.config import get_cfg
 from detectron2.engine import DefaultPredictor
 from torch.cuda import is_available
 
-import helper_functions as help_fn
+from model import helper_functions as help_fn
 
 
 class SEGMpredictor:
