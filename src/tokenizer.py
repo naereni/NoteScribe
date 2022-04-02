@@ -2,7 +2,7 @@ OOV_TOKEN = "<OOV>"
 CTC_BLANK = "<BLANK>"
 
 
-def get_char_map(alphabet):
+def get_char_map(alphabet: str) -> dict[str, int]:
     """Make from string alphabet character2int dict.
     Add BLANK char fro CTC loss and OOV char for out of vocabulary symbols."""
     char_map = {value: idx + 1 for (idx, value) in enumerate(alphabet)}
@@ -14,11 +14,11 @@ class Tokenizer:
     """Class for encoding and decoding string word to sequence of int
     (and vice versa) using alphabet."""
 
-    def __init__(self, alphabet):
+    def __init__(self, alphabet: str):
         self.char_map = get_char_map(alphabet)
         self.rev_char_map = {val: key for key, val in self.char_map.items()}
 
-    def encode(self, word_list):
+    def encode(self, word_list: list[str]) -> list[list[int]]:
         """Returns a list of encoded words (int)."""
         enc_words = []
         for word in word_list:
@@ -30,10 +30,10 @@ class Tokenizer:
             )
         return enc_words
 
-    def get_num_chars(self):
+    def get_num_chars(self) -> int:
         return len(self.char_map)
 
-    def decode(self, enc_word_list):
+    def decode(self, enc_word_list: list[list[int]]) -> list[str]:
         """Returns a list of words (str) after removing blanks and collapsing
         repeating characters. Also skip out of vocabulary token."""
         dec_words = []
@@ -50,9 +50,7 @@ class Tokenizer:
             dec_words.append(word_chars)
         return dec_words
 
-    def decode_after_beam(self, enc_word_list):
-        """Returns a list of words (str) after removing blanks and collapsing
-        repeating characters. Also skip out of vocabulary token."""
+    def decode_after_beam(self, enc_word_list: list[list[int]]) -> list[str]:
         dec_words = []
         for word in enc_word_list:
             word_chars = ""

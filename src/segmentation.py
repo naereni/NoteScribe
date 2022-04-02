@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+import numpy as np
 from detectron2 import model_zoo
 from detectron2.config import get_cfg
 from detectron2.engine import DefaultPredictor
@@ -7,7 +10,7 @@ import helper_functions as help_fn
 
 
 class SEGMpredictor:
-    def __init__(self, model_path):
+    def __init__(self, model_path: str):
         cfg = get_cfg()
         cfg.merge_from_file(
             model_zoo.get_config_file(
@@ -42,7 +45,7 @@ class SEGMpredictor:
 
         self.predictor = DefaultPredictor(cfg)
 
-    def __call__(self, img):
+    def __call__(self, img: np.ndarray) -> list[np.ndarray]:
         outputs = self.predictor(img)
         prediction = outputs["instances"].pred_masks.cpu().numpy()
         contours = []
