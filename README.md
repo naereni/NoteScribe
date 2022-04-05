@@ -9,9 +9,8 @@ To install you must have:
 
 ### Poerty
 ```
-curl -sSL https://install.python-poetry.org | python3 -
-poetry self update --preview
-reboot # add $poetry to $PATH
+curl -sSL https://install.python-poetry.org | python3 - --preview
+export PATH="/home/$USER/.local/bin:$PATH"
 ```
 
 ### htr-tg-bot
