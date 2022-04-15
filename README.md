@@ -16,7 +16,7 @@ export PATH="/home/$USER/.local/bin:$PATH"
 ### htr-tg-bot
 ```  bash
 git clone --recursive https://github.com/naereni/htr-tg-bot.git
-cd htr-tg-bot && sh setup.sh
+cd htr-tg-bot && sh install.sh
 ```
 
 If you will you encounter a problem with ctcdecode - you should run several times ```python setup.py install``` in directory **htr-tg-bot/third_party/ctcdecode**
