@@ -5,16 +5,16 @@ description = "Telegram bot for handwritten text recognition"
 authors = ["naereni <naereni12@gmail.com>"]
 license = "MIT License"
 readme = "README.md"
-packages = [{include = "htr_tg_bot"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-torch = "1.10.0"
 numpy = "^1.22.3"
 wheel = "^0.37.1"
 ninja = "^1.10.2.3"
-opencv-python = "^4.5.5.64"
-
+torch = "1.10.0"
+torchvision = "0.11.1"
+detectron2 = {url = "https://dl.fbaipublicfiles.com/detectron2/wheels/cu102/torch1.10/detectron2-0.6%2Bcu102-cp39-cp39-linux_x86_64.whl"}
+kenlm = {path = "third_party/kenlm"}
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^3.0.0"
@@ -22,11 +22,12 @@ pre-commit = "^2.17.0"
 flake8 = "^4.0.1"
 mypy = "^0.942"
 isort = "^5.10.1"
-black = {version = "^22.3.0", allow-prereleases = true}
+black = "21.4b2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = true
@@ -39,7 +40,6 @@ line-length = 79
 target-version = ['py38']
 include = '\.pyi?$'
 exclude = '''
-
 (
   /(
       \.eggs         # exclude a few common directories in the
