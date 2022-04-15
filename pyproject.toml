@@ -11,6 +11,7 @@ python = "^3.9"
 numpy = "^1.22.3"
 wheel = "^0.37.1"
 ninja = "^1.10.2.3"
+opencv-python = "^4.5.5.64"
 torch = "1.10.0"
 torchvision = "0.11.1"
 detectron2 = {url = "https://dl.fbaipublicfiles.com/detectron2/wheels/cu102/torch1.10/detectron2-0.6%2Bcu102-cp39-cp39-linux_x86_64.whl"}
