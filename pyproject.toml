@@ -16,6 +16,7 @@ torch = "1.10.0"
 torchvision = "0.11.1"
 detectron2 = {url = "https://dl.fbaipublicfiles.com/detectron2/wheels/cu102/torch1.10/detectron2-0.6%2Bcu102-cp39-cp39-linux_x86_64.whl"}
 kenlm = {path = "third_party/kenlm"}
+black = "21.4b2"
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^3.0.0"

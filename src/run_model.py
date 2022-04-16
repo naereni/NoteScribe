@@ -66,15 +66,13 @@ def init_predictor() -> PiepleinePredictor:
 
 
 def htr_predict(
-    img_name: str | np.ndarray, pipeline_predictor: PiepleinePredictor
+    img_name: str, pipeline_predictor: PiepleinePredictor
 ) -> plt_image:
-    if type(img_name) == str:
-        image = cv2.imread(img_name)
-    else:
-        image = img_name
+    image = cv2.imread(img_name)
     output = pipeline_predictor(image)
     vis = help_fn.get_image_visualization(image, output, "model/font.ttf")
     plt.figure(figsize=(20, 20))
     pred_img = plt.imshow(vis)
+    pred_name = "pred-" + img_name.split("/")[-1]
+    plt.savefig(pred_name)
     return pred_img
-    # plt.savefig("pred-" + img_name.split("/")[-1])
