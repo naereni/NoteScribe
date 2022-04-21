@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import warnings
@@ -8,7 +9,6 @@ import cv2
 import numpy as np
 import torch
 from matplotlib import pyplot as plt
-from matplotlib.image import AxesImage as plt_image
 
 import model.helper_functions as help_fn
 import model.recognition as rec
@@ -28,6 +28,7 @@ CONFIG_JSON["ocr_config"]["device"] = (
 )
 
 
+
 class PiepleinePredictor:
     def __init__(
         self,
@@ -43,16 +44,25 @@ class PiepleinePredictor:
             config=ocr_config,
         )
 
-    def __call__(self, img: np.ndarray) -> dict[str, list[list[int]] | str]:
-        output: dict[str, list[list[int]] | str] = {}
+    def __call__(
+        self, img: np.ndarray
+    ) -> dict[str, list[dict[str, list[list[int]] | str]]]:
+        output: dict[str, list[dict[str, list[list[int]] | str]]] = {
+            "predictions": []
+        }
         contours = self.segm_predictor(img)
         for contour in contours:
             if contour is not None:
                 crop = help_fn.crop_img_by_polygon(img, contour)
                 pred_text = self.ocr_predictor(crop)
-                pred_polygon = [[int(i[0][0]), int(i[0][1])] for i in contour]
-                output["polygon"] = pred_polygon
-                output["text"] = pred_text
+                output["predictions"].append(
+                    {
+                        "polygon": [
+                            [int(i[0][0]), int(i[0][1])] for i in contour
+                        ],
+                        "text": pred_text,
+                    }
+                )
         return output
 
 
@@ -65,14 +75,15 @@ def init_predictor() -> PiepleinePredictor:
     )
 
 
-def htr_predict(
-    img_name: str, pipeline_predictor: PiepleinePredictor
-) -> plt_image:
-    image = cv2.imread(img_name)
+async def htr_predict(
+    input_filename: str,
+    pred_filename: str,
+    pipeline_predictor: PiepleinePredictor,
+) -> None:
+    image = cv2.imread(input_filename)
+    await asyncio.sleep(35)
     output = pipeline_predictor(image)
     vis = help_fn.get_image_visualization(image, output, "model/font.ttf")
     plt.figure(figsize=(20, 20))
-    pred_img = plt.imshow(vis)
-    pred_name = "pred-" + img_name.split("/")[-1]
-    plt.savefig(pred_name)
-    return pred_img
+    plt.imshow(vis)
+    plt.savefig(pred_filename)

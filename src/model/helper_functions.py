@@ -64,7 +64,7 @@ def process_image(
 
 def get_image_visualization(
     img: np.ndarray,
-    prediction: dict[str, list[list[int]] | str],
+    pred_data: dict[str, list[dict[str, list[list[int]] | str]]],
     fontpath: str,
     font_koef: int = 50,
 ) -> np.ndarray:
@@ -73,12 +73,12 @@ def get_image_visualization(
     empty_img = Image.new("RGB", (w, h), (255, 255, 255))
     draw = ImageDraw.Draw(empty_img)
 
-    # for prediction in pred_data["predictions"]:
-    polygon = prediction["polygon"]
-    pred_text = prediction["text"]
-    cv2.drawContours(img, np.array([polygon]), -1, (0, 255, 0), 2)
-    x, y, w, h = cv2.boundingRect(np.array([polygon]))
-    draw.text((x, y), pred_text, fill=0, font=font)
+    for prediction in pred_data["predictions"]:
+        polygon = prediction["polygon"]
+        pred_text = prediction["text"]
+        cv2.drawContours(img, np.array([polygon]), -1, (0, 255, 0), 2)
+        x, y, w, h = cv2.boundingRect(np.array([polygon]))
+        draw.text((x, y), pred_text, fill=0, font=font)
 
     vis_img = np.array(empty_img)
     vis = np.concatenate((img, vis_img), axis=1)
