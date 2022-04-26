@@ -11,6 +11,9 @@ To install you must have:
 ```
 curl -sSL https://install.python-poetry.org | python3 - --preview
 export PATH="/home/$USER/.local/bin:$PATH"
+curl -sSL https://install.python-poetry.org | python3 -
+poetry self update --preview
+reboot # add $poetry to $PATH
 ```
 
 ### htr-tg-bot
@@ -46,3 +49,8 @@ If you will you encounter a problem with ctcdecode - you should run several time
 **Christofari** with **NVIDIA Tesla V100** and docker image **jupyter-cuda10.1-tf2.3.0-pt1.6.0-gpu:0.0.82**
 
 ### More about training [here](https://github.com/Lednik7/nto-ai-text-recognition)
+=======
+cd htr-tg-bot && sh setup.sh
+```
+
+If you will you encounter a problem with ctcdecode - you should run several times ```python setup.py install``` in directory **htr-tg-bot/third_party/ctcdecode**
