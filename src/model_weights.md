@@ -1,1 +1,1 @@
-## To install all weights require for model - download (this)[google.com], and extract in model_weights/
+## To install all weights require for model - download [here](https://drive.google.com/file/d/1HwevkqWPIyhDejsbvZLcIa8MTynQFRGs/view?usp=sharing), and extract in model_weights/
