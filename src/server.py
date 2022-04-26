@@ -9,16 +9,16 @@ from handlers import register_handlers
 logger = logging.getLogger(__name__)
 
 
-async def main():
+async def main() -> None:
     logging.basicConfig(
         level=logging.INFO,
-        format="%(filename)s:%(lineno)d #%(levelname)-8s [%(asctime)s] - %(name)s - %(message)s",
+        format="%(filename)s:%(lineno)d - [%(asctime)s] - %(message)s",
     )
     logger.info("Starting bot")
 
     try:
         TOKEN = os.environ["TG_API_TOKEN"]
-    except:
+    except UnboundLocalError:
         print("API_TOKEN was not found!")
 
     bot = Bot(TOKEN)

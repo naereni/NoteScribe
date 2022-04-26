@@ -28,7 +28,6 @@ CONFIG_JSON["ocr_config"]["device"] = (
 )
 
 
-
 class PiepleinePredictor:
     def __init__(
         self,
@@ -80,6 +79,7 @@ async def htr_predict(
     pred_filename: str,
     pipeline_predictor: PiepleinePredictor,
 ) -> None:
+    print("start pred")
     image = cv2.imread(input_filename)
     await asyncio.sleep(35)
     output = pipeline_predictor(image)

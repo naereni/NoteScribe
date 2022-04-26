@@ -162,3 +162,4 @@ cython_debug/
 #.idea/
 README.md.backup
 src/model/model_weights
+src/cache/
