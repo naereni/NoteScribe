@@ -27,7 +27,7 @@ async def get_examples(message: Message) -> None:
 
 
 async def get_source(message: Message) -> None:
-    await message.answer("https://github.com/naereni/htr-tg-bot/")
+    await message.answer("https://github.com/naereni/NoteScribe/")
 
 
 class Recognition:
